@@ -1,0 +1,13 @@
+{
+  "_readme": "Fill in project.name and project.description when installing Fieldwork in a new project. Enable MCP integrations that are available in your environment. Superpowers integration is detected automatically via filesystem (.superpowers/ directory or superpowers.config.json) - do not set it here.",
+  "project": {
+    "name": "",
+    "description": ""
+  },
+  "mcp": {
+    "github": false,
+    "linear": false,
+    "slack": false,
+    "confluence": false
+  }
+}

@@ -1,0 +1,28 @@
+# Internal working notes — not for public consumption
+NOTES.md
+
+# Context files: committed by default.
+# They are the grounding mechanism for every skill — if they're not in the repo,
+# every new session starts blind. Commit them.
+#
+# If your context files contain secrets (API keys, credentials), move those to .env
+# and reference them by name in the context file. Do not put secrets in context files.
+#
+# If you are publishing this repo publicly and want to exclude context files, uncomment:
+# context/project-context.md
+# context/product-context.md
+# context/constraints.md
+
+# Skill outputs contain project-specific content — excluded by default.
+# If you want to commit outputs (e.g. to share specs with your team), remove this line.
+outputs/
+
+# Spike outputs — excluded by default (same reason as outputs/)
+spikes/
+
+# Keep the gitkeep
+!context/.gitkeep
+
+# Example is committed (it's reference content, not real company data)
+!example/
+!example/**

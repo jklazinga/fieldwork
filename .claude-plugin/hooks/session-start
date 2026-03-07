@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# SessionStart hook for fieldwork plugin
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+PROJECT_ROOT="${PWD}"
+
+# Check for missing context files and build a warning
+warning_message=""
+missing_context=()
+
+for f in "context/project-context.md" "context/product-context.md" "context/constraints.md"; do
+    fpath="${PROJECT_ROOT}/${f}"
+    if [ ! -f "${fpath}" ]; then
+        missing_context+=("$f")
+    elif grep -qE '\[What this codebase does|Fill this in manually|_Last updated: YYYY-MM-DD_|\[Size, roles|YYYY-MM-DD' "${fpath}" 2>/dev/null; then
+        # File exists but still contains template placeholder text — treat as missing
+        missing_context+=("$f (unfilled template)")
+    fi
+done
+
+if [ ${#missing_context[@]} -gt 0 ]; then
+    files_list=$(printf '%s, ' "${missing_context[@]}" | sed 's/, $//')
+    warning_message="\n\n<important-reminder>IN YOUR FIRST REPLY AFTER SEEING THIS MESSAGE YOU MUST TELL THE USER: ⚠️ **Fieldwork context files missing:** ${files_list}. Run \`fieldwork:onboard\` before starting any skill.</important-reminder>"
+fi
+
+# Read using-fieldwork content
+using_fieldwork_content=$(cat "${PLUGIN_ROOT}/skills/using-fieldwork/SKILL.md" 2>&1 || echo "Error reading using-fieldwork skill")
+
+# Escape string for JSON embedding
+escape_for_json() {
+    local s="$1"
+    s="${s//\\/\\\\}"
+    s="${s//\"/\\\"}"
+    s="${s//$'\n'/\\n}"
+    s="${s//$'\r'/\\r}"
+    s="${s//$'\t'/\\t}"
+    printf '%s' "$s"
+}
+
+using_fieldwork_escaped=$(escape_for_json "$using_fieldwork_content")
+warning_escaped=$(escape_for_json "$warning_message")
+
+session_context="<EXTREMELY_IMPORTANT>\nYou have Fieldwork.\n\n**Below is the full content of your 'fieldwork:using-fieldwork' skill — your introduction to using Fieldwork skills. For all other skills, use the 'Skill' tool:**\n\n${using_fieldwork_escaped}\n\n${warning_escaped}\n</EXTREMELY_IMPORTANT>"
+
+cat <<EOF
+{
+  "additional_context": "${session_context}",
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "additionalContext": "${session_context}"
+  }
+}
+EOF
+
+exit 0

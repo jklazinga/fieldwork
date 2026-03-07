@@ -1,0 +1,16 @@
+{
+  "name": "fieldwork",
+  "description": "PM-native skills framework for AI coding agents. Discovery, spec, GTM, marketing, launch, and retro.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Josh Klazinga",
+    "email": "josh@klazinga.com"
+  },
+  "homepage": "https://github.com/jklazinga/fieldwork",
+  "repository": "https://github.com/jklazinga/fieldwork",
+  "license": "MIT",
+  "keywords": ["pm", "product-management", "discovery", "spec", "gtm", "launch", "skills", "workflows"],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "hooks": "${CURSOR_PLUGIN_ROOT}/hooks/hooks.json"
+}

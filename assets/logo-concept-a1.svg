@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="40" fill="#0F0F0F"/>
+
+  <!-- 4x4 dot grid, evenly spaced -->
+  <!-- Cols at x: 52, 84, 116, 148 | Rows at y: 52, 84, 116, 148 -->
+
+  <!-- Dim dots (off-path) -->
+  <circle cx="52"  cy="52"  r="6" fill="#2A2A2A"/>
+  <circle cx="84"  cy="52"  r="6" fill="#2A2A2A"/>
+  <circle cx="116" cy="52"  r="6" fill="#2A2A2A"/>
+  <circle cx="148" cy="52"  r="6" fill="#2A2A2A"/>
+
+  <circle cx="52"  cy="84"  r="6" fill="#2A2A2A"/>
+  <circle cx="84"  cy="84"  r="6" fill="#2A2A2A"/>
+  <circle cx="116" cy="84"  r="6" fill="#2A2A2A"/>
+  <circle cx="148" cy="84"  r="6" fill="#2A2A2A"/>
+
+  <circle cx="52"  cy="116" r="6" fill="#2A2A2A"/>
+  <circle cx="84"  cy="116" r="6" fill="#2A2A2A"/>
+  <circle cx="116" cy="116" r="6" fill="#2A2A2A"/>
+  <circle cx="148" cy="116" r="6" fill="#2A2A2A"/>
+
+  <circle cx="52"  cy="148" r="6" fill="#2A2A2A"/>
+  <circle cx="84"  cy="148" r="6" fill="#2A2A2A"/>
+  <circle cx="116" cy="148" r="6" fill="#2A2A2A"/>
+  <circle cx="148" cy="148" r="6" fill="#2A2A2A"/>
+
+  <!-- Diagonal path: bottom-left → top-right (4 nodes) -->
+  <!-- Path line underneath dots -->
+  <line x1="52" y1="148" x2="84"  y2="116" stroke="#4ADE80" stroke-width="3" stroke-linecap="round"/>
+  <line x1="84" y1="116" x2="116" y2="84"  stroke="#4ADE80" stroke-width="3" stroke-linecap="round"/>
+  <line x1="116" y1="84" x2="148" y2="52"  stroke="#4ADE80" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Highlighted path dots (on top) -->
+  <circle cx="52"  cy="148" r="8" fill="#4ADE80"/>
+  <circle cx="84"  cy="116" r="8" fill="#4ADE80"/>
+  <circle cx="116" cy="84"  r="8" fill="#4ADE80"/>
+  <circle cx="148" cy="52"  r="8" fill="#4ADE80"/>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "name": "fieldwork-marketplace",
+  "description": "Fieldwork plugin marketplace",
+  "owner": {
+    "name": "Josh Klazinga",
+    "email": "josh@klazinga.com"
+  },
+  "plugins": [
+    {
+      "name": "fieldwork",
+      "description": "PM-native skills framework for AI coding agents. Discovery, spec, GTM, marketing, launch, and retro - everything before and after the code.",
+      "version": "0.2.0",
+      "source": "./",
+      "author": {
+        "name": "Josh Klazinga",
+        "email": "josh@klazinga.com"
+      },
+      "homepage": "https://github.com/jklazinga/fieldwork",
+      "repository": "https://github.com/jklazinga/fieldwork",
+      "license": "MIT",
+      "keywords": ["pm", "product-management", "discovery", "spec", "gtm", "launch", "skills", "workflows"]
+    }
+  ]
+}
