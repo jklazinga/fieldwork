@@ -26,6 +26,18 @@ if [ ${#missing_context[@]} -gt 0 ]; then
     warning_message="\n\n<important-reminder>IN YOUR FIRST REPLY AFTER SEEING THIS MESSAGE YOU MUST TELL THE USER: ⚠️ **Fieldwork context files missing:** ${files_list}. Run \`fieldwork:onboard\` before starting any skill.</important-reminder>"
 fi
 
+# Load any user-provided custom context files from context/custom/
+custom_context=""
+custom_dir="${PROJECT_ROOT}/context/custom"
+if [ -d "${custom_dir}" ]; then
+    for f in "${custom_dir}"/*.md; do
+        [ -f "$f" ] || continue
+        fname=$(basename "$f")
+        [[ "$fname" == README.md ]] && continue
+        custom_context="${custom_context}\n\n### Custom context: ${fname}\n$(cat "$f")"
+    done
+fi
+
 # Read using-fieldwork content
 using_fieldwork_content=$(cat "${PLUGIN_ROOT}/skills/using-fieldwork/SKILL.md" 2>&1 || echo "Error reading using-fieldwork skill")
 
@@ -42,8 +54,14 @@ escape_for_json() {
 
 using_fieldwork_escaped=$(escape_for_json "$using_fieldwork_content")
 warning_escaped=$(escape_for_json "$warning_message")
+custom_context_escaped=$(escape_for_json "$custom_context")
 
-session_context="<EXTREMELY_IMPORTANT>\nYou have Fieldwork.\n\n**Below is the full content of your 'fieldwork:using-fieldwork' skill — your introduction to using Fieldwork skills. For all other skills, use the 'Skill' tool:**\n\n${using_fieldwork_escaped}\n\n${warning_escaped}\n</EXTREMELY_IMPORTANT>"
+custom_context_block=""
+if [ -n "$custom_context" ]; then
+    custom_context_block="\n\n## Project custom context\nThe following context was provided by the project team in \`context/custom/\`. Apply it throughout this session:\n${custom_context_escaped}"
+fi
+
+session_context="<EXTREMELY_IMPORTANT>\nYou have Fieldwork.\n\n**Below is the full content of your 'fieldwork:using-fieldwork' skill — your introduction to using Fieldwork skills. For all other skills, use the 'Skill' tool:**\n\n${using_fieldwork_escaped}${custom_context_block}\n\n${warning_escaped}\n</EXTREMELY_IMPORTANT>"
 
 cat <<EOF
 {

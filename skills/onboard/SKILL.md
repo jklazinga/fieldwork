@@ -146,11 +146,38 @@ _Last updated: YYYY-MM-DD_
 [Architecture decisions, compliance, contracts]
 ```
 
+### 8. Scaffold custom context directory
+
+Create `context/custom/` if it does not already exist. Write `context/custom/README.md` with the following content (do not overwrite if it already exists):
+
+```markdown
+# Custom Context
+
+Drop any `.md` files in this directory to inject project-specific context into every Fieldwork session.
+
+Fieldwork loads all `.md` files here at session start (this README is excluded).
+
+## Use cases
+
+- **Tool integrations** — e.g. "We use Figma MCP. When running `discover` or `spec`, always check Figma for existing designs before asking the PM."
+- **Team conventions** — e.g. naming standards, review process, who owns what.
+- **Stage overrides** — e.g. "During GTM, pull copy from `docs/gtm-templates/` and include it in the launch brief."
+- **Workflow preferences** — any other instructions you want applied consistently across all sessions.
+
+## Tips
+
+- One file per concern (e.g. `figma.md`, `gtm.md`, `team.md`).
+- Keep files focused — broad context is fine, but avoid contradicting core Fieldwork skill behaviour.
+- This directory is yours. It is not managed by Fieldwork and will not be overwritten on plugin updates.
+```
+
 ## After onboard
 
 "Context files written:
 - `context/project-context.md`
 - `context/product-context.md`
 - `context/constraints.md`
+
+Custom context directory created at `context/custom/` — drop `.md` files there to inject project-specific instructions into every session.
 
 You can now describe a feature or opportunity and I'll use the `discover` skill to explore it."
