@@ -52,6 +52,12 @@ Identify 3-5 concrete learnings. Each learning must be actionable - not "the spe
 ### 5. Update project context
 Add learnings to `context/project-context.md` under a "Learnings" section. Add any new constraints discovered to `context/constraints.md`. Do not rewrite the whole file - append only.
 
+### 5b. Check Definition of Done
+Load `outputs/plans/{feature-name}/plan.md`. If a "Definition of Done" section exists, present it to the PM: "Before we close — here's the Definition of Done for this feature. Is everything checked off?" Work through any unchecked items. If the plan file does not exist, skip this step.
+
+### 5c. Update product context
+Ask the PM: "Did this feature reveal anything that contradicts your current personas, channels, or positioning in `product-context.md`?" If yes: load `context/product-context.md`, show the PM the specific section that's affected, propose a targeted replacement for that section only, and wait for explicit confirmation before writing. Do not append — update in place. Do not rewrite sections that weren't mentioned.
+
 ### 6. Update document statuses
 Update frontmatter `status` to `shipped` in:
 - `outputs/specs/{feature-name}/spec.md`

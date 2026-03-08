@@ -78,6 +78,7 @@ Read `skills/discover/assumption-mapping.md` using the Read tool.
 - [ ] Present summary: problem, proposed opportunity, top 3 riskiest assumptions, success metrics
 - [ ] Ask: "Does this capture the opportunity correctly? Any changes before I mark it approved?"
 - [ ] **Decision gate:** Ask: "Is this opportunity worth an engineering investment? What would have to be true for it not to be?" Wait for a real answer - do not accept "yes" without the PM articulating the condition under which they'd stop.
+- [ ] **Spike check:** Read `outputs/opportunities/{feature-name}/assumptions.md`. Identify any assumptions rated high-importance AND weak-evidence or none. If any exist, name them explicitly: "Before I mark this approved — these assumptions are high-importance / weak-evidence: [list each one]. Do any of these need a spike to validate before we commit to a spec?" Wait for a real answer. If yes, stop and trigger `spike`. If no, record the PM's reasoning in the opportunity document under "Assumptions accepted without validation".
 - [ ] **Write a prediction:** Ask: "If this works, what will we observe in 30/60/90 days? Be specific." Record the answer in the opportunity document under "Prediction". This is what the retro will compare against.
 - [ ] On approval: update frontmatter status to `approved`
 

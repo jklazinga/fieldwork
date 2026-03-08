@@ -118,6 +118,24 @@ _Must be resolved before or during implementation - not after_
 - [Question - owner]
 ```
 
+## Definition of Done checklist
+
+After the plan is approved, append the following checklist to `outputs/plans/{feature-name}/plan.md`. Generate each item from the spec and plan — do not leave items blank or generic.
+
+```markdown
+## Definition of Done
+
+_Generated from spec and plan. GTM items added by write-gtm if run. Read by close-feature at retro._
+
+- [ ] All tasks in this plan completed and merged
+- [ ] All acceptance criteria from spec verified
+- [ ] Tests passing (unit, integration, e2e as applicable)
+- [ ] Instrumentation live: [list each event/data point required by success metrics]
+- [ ] Feature flag configured: [state flag name and rollout plan, or "N/A"]
+- [ ] No regressions in adjacent features
+- [ ] GTM items: _to be added by write-gtm_
+```
+
 ## After write-plan
 
 "Plan saved to `outputs/plans/{feature-name}/plan.md`.

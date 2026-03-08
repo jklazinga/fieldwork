@@ -105,9 +105,24 @@ _Channels drawn from context/product-context.md_
 [Unresolved GTM decisions - owner for each]
 ```
 
+## Complete the Definition of Done
+
+After the GTM plan is approved, load `outputs/plans/{feature-name}/plan.md`. Find the "Definition of Done" section. Replace the `GTM items: _to be added by write-gtm_` placeholder with the specific GTM items from this plan:
+
+```markdown
+- [ ] GTM assets ready: [list each asset — email copy, in-app message, blog post, etc. — or "N/A"]
+- [ ] Stakeholders notified: [list who needs to know before or at launch]
+- [ ] Launch type confirmed: [quiet rollout / internal / customer announcement / public launch]
+```
+
+If `outputs/plans/{feature-name}/plan.md` does not exist (GTM was run without write-plan), create `outputs/plans/{feature-name}/dod.md` with the full Definition of Done checklist instead, including both the standard items from write-plan and the GTM items above.
+
+Save the updated file.
+
 ## After write-gtm
 
 "GTM plan saved to `outputs/gtm/{feature-name}/gtm-plan.md`.
+Definition of Done updated in `outputs/plans/{feature-name}/plan.md`.
 
 Next steps:
 1. **Marketing brief** - I run `write-marketing` to produce copy and asset briefs

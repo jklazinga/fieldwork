@@ -62,6 +62,9 @@ Run all dimensions. Do not skip any.
 - Are open questions listed? Are they actually open, or have they been answered in the spec body?
 - Is the spec self-contained? Could an engineer implement this without asking the PM any questions?
 
+### Instrumentation
+- Load `outputs/opportunities/{feature-name}/opportunity.md`. For each success metric listed: does at least one acceptance criterion specify the event, property, or data point that will be captured — not just the dashboard view or outcome? Flag any metric where the acceptance criteria only describe the end state ("dashboard shows X") without specifying what must be instrumented to produce it. These are IMPORTANT issues — a feature that ships without instrumentation cannot be evaluated at retro.
+
 ## Severity levels
 
 - **BLOCKER** - Must be resolved before engineering starts. Creates ambiguity that will cause rework or incorrect implementation.
