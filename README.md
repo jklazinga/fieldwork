@@ -150,6 +150,19 @@ These are **committed by default**. The grounding mechanism only works if contex
 
 Templates are in `context/`.
 
+### Custom context
+
+Drop `.md` files into `context/custom/` to inject project-specific instructions into every Fieldwork session. Fieldwork loads them automatically at session start alongside the three core context files.
+
+Use this for anything that should apply consistently across your workflow but is specific to your project or team:
+
+- **Tool integrations:** e.g. "We have Figma MCP available. During discovery and spec, always check Figma for existing designs before asking the PM."
+- **Team conventions:** naming standards, review process, who owns what
+- **Stage overrides:** e.g. "During GTM, pull copy from `docs/gtm-templates/` and include it in the launch brief."
+- **Workflow preferences:** any standing instructions you want applied every session
+
+The `onboard` skill scaffolds `context/custom/` with a README when it runs. The directory is yours. Fieldwork will never overwrite files in it.
+
 ---
 
 ## Integrations
