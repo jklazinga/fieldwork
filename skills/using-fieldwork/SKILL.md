@@ -41,8 +41,8 @@ The answer determines the path. Not every idea needs a spec. Not every spec need
 
 ### Spike
 **When:** The bet is small or reversible, OR a key assumption is testable by building, OR the user says "prototype", "spike", "quick experiment", "let's just try it."
-**Path:** `spike` → debrief → (if validated) `discover` or `write-spec`
-**What it produces:** A test, not a document. One question answered.
+**Path:** `spike` → (if shown to a user or stakeholder) `measure` → (continue) `write-spec` | (pivot) `discover` | (stop) close
+**What it produces:** A test, not a document. One question answered. Use `measure` when a human has reacted to the prototype — not for purely technical spikes.
 
 ### Feature
 **When:** The opportunity is understood well enough to commit engineering time. Medium-sized bet. Clear problem, plausible solution, team ready to build.
@@ -82,6 +82,7 @@ Use judgment. The goal is to match the process to the decision, not to invoke a 
 | Spec approved, need GTM plan | `fieldwork:write-gtm` |
 | GTM plan approved, need marketing brief | `fieldwork:write-marketing` |
 | GTM plan approved, need launch brief | `fieldwork:write-launch-brief` |
+| Prototype shown to a user or stakeholder, need to capture what was learned | `fieldwork:measure` |
 | Feature shipped, need retro | `fieldwork:close-feature` |
 | All initiative features shipped, need initiative retro | `fieldwork:close-initiative` |
 | First time setup, context files missing | `fieldwork:onboard` |
