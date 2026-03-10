@@ -55,6 +55,7 @@ The answer determines the path. Not every idea needs a spec. Not every spec need
 **When:** Large, cross-cutting, or high-stakes bet. Multiple teams, significant investment, or strategic importance.
 **Path:** `initiative` → (per feature) `discover` → (optional) `spike` → (if prototype shown to a human) `measure` → `write-spec` → `review-spec` → `write-plan` → `scaffold-tasks` → `write-gtm` → `write-marketing` → `write-launch-brief` → `close-feature` → (at end) `close-initiative`
 **Required gates:** All of them. The `initiative` skill runs first - it establishes the strategic thesis, stakeholder alignment, and stop condition before any feature discovery begins. If a PM wants to skip a gate, ask why - don't just comply.
+**Optional pre-discover steps:** `analyse-competitors` (to inform framing before or during discovery), `synthesise-research` (if raw user signal exists that hasn't been processed). Same as Feature path.
 
 **Note on initiative path:** `initiative` is not a bigger version of `discover`. It runs before discovery to set the frame - thesis, stop condition, who has veto power. Discovery then runs per feature inside that frame.
 
@@ -84,10 +85,11 @@ Use judgment. The goal is to match the process to the decision, not to invoke a 
 | Spec approved, need GTM plan | `fieldwork:write-gtm` |
 | GTM plan approved, need marketing brief | `fieldwork:write-marketing` |
 | GTM plan approved, need launch brief | `fieldwork:write-launch-brief` |
-| Prototype shown to a user or stakeholder, need to capture what was learned | `fieldwork:measure` |
-| Prototype invalidated the opportunity, need to close it out | `fieldwork:measure` → stop → `fieldwork:close-feature` |
+| Prototype shown to a user or stakeholder, need to capture what was learned and decide next step | `fieldwork:measure` |
 | Feature shipped, need retro | `fieldwork:close-feature` |
 | All initiative features shipped, need initiative retro | `fieldwork:close-initiative` |
+
+**Note on measure verdicts:** `measure` produces one of three verdicts — continue, pivot, or stop. If stop, run `close-feature` next to formally close the opportunity.
 | First time setup, context files missing | `fieldwork:onboard` |
 | Creating or extending a Fieldwork skill | `fieldwork:writing-skills` |
 

@@ -182,7 +182,7 @@ _Ideas that surfaced during spec drafting but are out of scope for this feature.
 "Spec saved to `outputs/specs/{feature-name}/spec.md`.
 
 Three paths from here:
-1. **Review first** - I run `review-spec` to critique the spec before handing off (recommended)
+1. **Review first** - I run `review-spec` to critique the spec before handing off (required unless explicitly skipped)
 2. **Prototype first** - if riskiest assumptions are still unvalidated, run `spike` to test before engineering begins. After showing the prototype to a user or stakeholder, run `measure` to capture what was learned and route back here.
 3. **Proceed** - I run `write-gtm` to plan go-to-market in parallel with execution
 
