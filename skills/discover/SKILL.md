@@ -128,4 +128,9 @@ See `skills/discover/assumption-mapping.md` for the full output format.
 "Opportunity saved to `outputs/opportunities/{feature-name}/opportunity.md`.
 Assumption map saved to `outputs/opportunities/{feature-name}/assumptions.md`.
 
-Ready to write the spec? I'll use the `write-spec` skill."
+Three paths from here:
+1. **Spike first** - if any high-importance / weak-evidence assumptions exist, run `spike` to test before committing to a spec. After the spike is shown to a user or stakeholder, run `measure`.
+2. **Write the spec** - opportunity is solid, ready to commit. I'll use `write-spec`.
+3. **Research first** - if raw user signal exists that hasn't been synthesised, run `synthesise-research` and feed findings back into this opportunity.
+
+Which would you like?"
