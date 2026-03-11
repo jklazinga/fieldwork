@@ -38,7 +38,22 @@ Also read:
 - Any migration or schema files if data changes are involved
 - Feature flag infrastructure if a flag is involved
 
-### 2. Sequence the work
+### 2. Choose working style
+Before drafting, ask the PM:
+
+"How would you like to work through this?
+1. Phase by phase — I present each phase as I write it, so you can shape it as we go
+2. All at once — I write the full plan and you review it at the end
+
+Reply with 1 or 2."
+
+Honour the answer. Do not re-ask.
+
+**If 1 (phase by phase):** Present each phase before moving to the next. Only pause if there is a genuine open question Claude cannot resolve.
+
+**If 2 (all at once):** Write the complete plan, then present a summary and ask for approval once.
+
+### 3. Sequence the work
 Break the spec into phases. Each phase should be independently shippable or testable.
 
 **Default bias is TDD.** Tests are written before or alongside implementation — never after. For each unit of behaviour, the sequence is: types/interfaces (if needed) → failing tests → implementation that makes them pass.
@@ -55,14 +70,14 @@ If the project's coding conventions (CLAUDE.md or equivalent) declare a differen
 
 Not every feature needs all phases. Skip phases that don't apply. Say why.
 
-### 3. Write tasks
+### 4. Write tasks
 Each task must be:
 - **Atomic** - one engineer, one session, completable without waiting on another task
 - **Grounded** - references real file paths from the codebase
 - **Testable** - has a clear done condition
 - **Ordered** - dependencies are explicit
 
-### 4. Get approval
+### 5. Get approval
 Present a summary: number of phases, number of tasks, estimated complexity, top risk.
 Ask: "Does this plan look right before I hand it off?"
 On approval: update frontmatter status to `approved`.

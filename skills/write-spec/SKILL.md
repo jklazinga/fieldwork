@@ -40,8 +40,20 @@ Identify all files, modules, and patterns relevant to this feature:
 
 Document the file paths you read. They go into the spec's technical notes section.
 
-### 2. Draft the spec - section by section
-Present each section to the PM before moving to the next. Do not write the whole spec and present it at the end.
+### 2. Choose working style
+Before drafting, ask the PM:
+
+"How would you like to work through this?
+1. Section by section — I present each section as I write it, so you can shape it as we go
+2. All at once — I write the full spec and you review it at the end
+
+Reply with 1 or 2."
+
+Honour the answer. Do not re-ask.
+
+**If 1 (section by section):** Present each section before moving to the next. Only pause for PM input if there is a genuine open question Claude cannot resolve — do not ask "does this look right?" after sections that are straightforward given prior discussion.
+
+**If 2 (all at once):** Write the complete spec, then present a summary and ask for approval once.
 
 **Section order:**
 1. Problem statement + proposed solution
