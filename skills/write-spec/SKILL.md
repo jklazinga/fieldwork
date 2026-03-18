@@ -75,6 +75,18 @@ Do not add parked items to scope, user flows, or acceptance criteria. Capture th
 Do not ask "anything to park?" after each section. Ask once, just before step 5a: *"Before we wrap - anything to park that didn't get flagged inline?"*
 
 ### 3. Acceptance criteria rules
+Before drafting any acceptance criteria, ask the PM:
+
+"Before I write the acceptance criteria — how will we know this worked? What does success look like when a user hits this feature for the first time?"
+
+Wait for the answer. Use it as the anchor for all acceptance criteria. Do not draft criteria that cannot be traced back to this answer.
+
+If the PM's answer is vague ("it feels right", "users like it"), push back once: "Can you give me one observable thing that would happen if this worked?"
+
+This question must be answered before proceeding to write acceptance criteria. It is not optional.
+
+---
+
 Every criterion must be testable. Apply this test: could an engineer write an automated test for this criterion?
 - ✅ "Returns HTTP 200 with a JSON body containing `{id, name, status}`"
 - ✅ "Renders the empty state component when the list has zero items"
