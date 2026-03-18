@@ -24,46 +24,21 @@ Do NOT invoke write-gtm or any downstream skill until spec status is `approved`.
 4. Load `context/constraints.md` - for feasibility checks.
 5. Create directory `outputs/specs/{feature-name}/` if it does not exist (it should already).
 
-## Critique dimensions
+## Dispatch reviewer subagent
 
-Run all dimensions. Do not skip any.
+After pre-flight, do NOT run the critique yourself. Instead:
 
-### Clarity
-- Are acceptance criteria testable? Flag any that use vague language ("works correctly", "handles gracefully", "feels intuitive").
-- Are user flows complete? Check: what happens on error? On empty state? On permission denied? On network failure?
-- Is scope unambiguous? Could an engineer interpret any in-scope item two different ways?
-- Are all terms defined? (No undefined jargon, no assumed shared knowledge)
+1. Read `skills/review-spec/reviewer-prompt.md`.
+2. Construct the subagent prompt: paste `reviewer-prompt.md` in full, then append each loaded document inline under a clearly labelled heading:
+   - `## SPEC` — full content of spec.md
+   - `## OPPORTUNITY` — full content of opportunity.md
+   - `## ASSUMPTIONS` — full content of assumptions.md
+   - `## CONSTRAINTS` — full content of constraints.md
+3. Dispatch via the `Task()` tool. Wait for findings.
+4. Parse findings into BLOCKER / IMPORTANT / MINOR groups.
+5. Present findings to the PM and proceed with the triage loop below.
 
-### Completeness
-- Are all user types covered? (Check personas from product-context.md)
-- Are all entry points to this feature documented? (Direct navigation, deep links, API calls, background jobs)
-- Are dependencies identified and resolved? (No "assumes X exists" without confirming X exists)
-- Are all error states documented?
-
-### Assumption alignment
-- Load `assumptions.md`. For each high-importance / weak-evidence assumption: does the spec acknowledge it? Does it have a mitigation?
-- Does the spec assume existing infrastructure that may not exist? (Check against project-context.md)
-- Does the spec assume user behaviour that hasn't been validated?
-
-### Feasibility
-- Do the technical notes reference actual files in the codebase? (Not invented paths)
-- Does the spec ignore known tech debt or fragile areas from constraints.md?
-- Are performance requirements realistic given the current architecture?
-- Are there security implications not addressed?
-
-### Opportunity alignment
-- Does the proposed solution actually solve the problem stated in opportunity.md?
-- Is every success metric from opportunity.md reflected in at least one acceptance criterion? Flag any metric with no corresponding criterion.
-- Does the scope boundary in the spec match the scope boundary in the opportunity?
-- Does a "Prediction" exist in opportunity.md? If yes: does this spec give us a real shot at achieving it? If the spec as written would not plausibly produce the predicted outcome, flag it as a BLOCKER.
-
-### Spec quality
-- Is the out-of-scope section explicit? (Not just empty)
-- Are open questions listed? Are they actually open, or have they been answered in the spec body?
-- Is the spec self-contained? Could an engineer implement this without asking the PM any questions?
-
-### Instrumentation
-- Load `outputs/opportunities/{feature-name}/opportunity.md`. For each success metric listed: does at least one acceptance criterion specify the event, property, or data point that will be captured — not just the dashboard view or outcome? Flag any metric where the acceptance criteria only describe the end state ("dashboard shows X") without specifying what must be instrumented to produce it. These are IMPORTANT issues — a feature that ships without instrumentation cannot be evaluated at retro.
+**If `Task()` is not available:** Run the critique dimensions from `reviewer-prompt.md` yourself, but frame it explicitly: "I am now reviewing this spec as if I did not write it." Do not soften findings.
 
 ## Severity levels
 
