@@ -130,7 +130,27 @@ Assumption map saved to `outputs/opportunities/{feature-name}/assumptions.md`.
 
 Three paths from here:
 1. **Spike first** - if any high-importance / weak-evidence assumptions exist, run `spike` to test before committing to a spec. After the spike is shown to a user or stakeholder, run `measure`.
-2. **Write the spec** - opportunity is solid, ready to commit. I'll use `write-spec`.
+2. **Write the spec** - opportunity is solid, ready to commit.
 3. **Research first** - if raw user signal exists that hasn't been synthesised, run `synthesise-research` and feed findings back into this opportunity.
 
 Which would you like?"
+
+**If the PM chooses path 2**, ask before starting:
+
+"How do you want to run this?
+1. **Step by step** — I'll run each skill and check in with you between stages
+2. **Full run** — I'll chain `write-spec → review-spec → write-plan → scaffold-tasks` autonomously and only stop if I hit a blocker I can't resolve on my own"
+
+**If step by step (2a):** Proceed with `write-spec` as normal. Each skill hands off to the next only when the PM explicitly proceeds.
+
+**If full run (2b):**
+- Run `write-spec` — do not stop for PM approval between sections; run the hill-climbing pass; present spec summary and proceed without waiting for PM sign-off unless the PM has set `working-style: 1` (section by section) earlier in this session.
+- Run `review-spec` — dispatch reviewer subagent; resolve any IMPORTANT or MINOR issues autonomously where the resolution is unambiguous; **stop and wait for PM input only if a BLOCKER requires a decision that cannot be resolved from the spec, opportunity, or constraints files alone**.
+- Run `write-plan` — proceed autonomously.
+- Run `scaffold-tasks` — proceed autonomously.
+- When complete, present a summary: "Full run complete. Here's what was produced: [list outputs]. [N] decisions were made autonomously. [List any BLOCKERs that required PM input, or 'No blockers required your input.']"
+
+**Full run rules:**
+- Never skip a required gate silently. If a gate cannot be cleared without PM input, surface it clearly and wait.
+- Never invent resolutions to BLOCKERs. If a BLOCKER requires a judgment call the agent cannot make from available context, stop.
+- Proceed past each skill only when its output meets the quality bar the skill defines — not just because the skill ran.
