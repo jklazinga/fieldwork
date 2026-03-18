@@ -65,6 +65,7 @@ Honour the answer. Do not re-ask.
 7. Open questions
 8. Dependencies
 9. Parking Lot (always present - even if empty)
+10. Strengthening pass (hill-climbing — runs before PM approval)
 
 **Parking lot capture - during drafting:**
 - **Explicit prefix** (`> later:`, `> parking:`, `> future:`): route directly to `## Parking Lot`. No confirmation needed.
@@ -113,7 +114,22 @@ Do not promote items without explicit PM confirmation.
 ### 6. Save spec
 Set status to `draft`. Ask PM to review and approve.
 
-### 7. Get approval
+### 7. Strengthen the spec before approval (hill-climbing pass)
+
+Before presenting the spec for PM approval, run up to 3 strengthening rounds:
+
+**Each round:**
+1. Re-read the full spec as if you did not write it.
+2. Ask: "If I were an adversarial reviewer, what is the weakest part of this spec? What edge case is missing? What assumption is unstated?"
+3. If you find a genuine gap: fix it in the spec, note the change briefly (one line), and run another round.
+4. If you find nothing material: stop. The spec is ready.
+
+Do not run more than 3 rounds. Do not invent problems to fill rounds.
+
+After the rounds are complete, present the spec to the PM with a brief note on what the strengthening pass changed (or "no material changes found").
+
+### 8. Get approval
+
 Present a summary: solution, scope, acceptance criteria count, top riskiest assumption.
 Ask: "Does this spec capture what we're building? Ready to approve?"
 On approval: update frontmatter status to `approved`.
